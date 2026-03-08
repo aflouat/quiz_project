@@ -12,7 +12,7 @@ def home(request):
     return render(request, 'quiz_app/home.html')
 
 
-#@login_required
+@login_required
 def quiz_view(request):
     """Affiche le quiz avec les questions"""
     if request.method == 'POST':
@@ -74,7 +74,7 @@ def submit_quiz(request):
     return redirect('results')
 
 
-#@login_required
+@login_required
 def results_view(request):
     """Affiche les résultats"""
     results = QuizResult.objects.filter(user=request.user).order_by('-completed_at')
