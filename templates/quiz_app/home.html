@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4">Bienvenue sur le Mini Quiz</h1>
+        <p class="lead">Testez vos connaissances avec ce quiz interactif !</p>
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'quiz' %}" class="btn btn-primary btn-lg">Commencer le Quiz</a>
+            <a href="{% url 'results' %}" class="btn btn-secondary btn-lg">Voir les Résultats</a>
+        {% else %}
+            <p class="mt-4">Connectez-vous pour commencer le quiz !</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

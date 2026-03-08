@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Mes Résultats</h2>
+        
+        {% if results %}
+            {% for result in results %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Résultat du {{ result.completed_at|date:"d/m/Y" }}</h5>
+                        <p class="card-text">
+                            Score : <strong>{{ result.score }}</strong> / {{ result.total_questions }}
+                            {% if result.total_questions > 0 %}
+                                ({{ result.score|floatformat:1 }}%)
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Aucun résultat disponible.</p>
+        {% endif %}
+        
+        <a href="{% url 'quiz' %}" class="btn btn-primary">Recommencer le Quiz</a>
+    </div>
+</div>
+{% endblock %}
